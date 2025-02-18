@@ -53,7 +53,7 @@ export default function ContactForm() {
 
   return (
     <div className="container">
-      <img src="src/assets/TeGaia-logo-11.svg" alt="Company Logo" className="company-logo" />
+      <img src="/TeGaia-logo-11.svg" alt="Company Logo" className="company-logo" />
       <h4>Contact Us</h4>
       <form onSubmit={handleSubmit}>
         <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
