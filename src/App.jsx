@@ -21,8 +21,15 @@ export default function ContactForm() {
     setSuccess(null);
 
     try {
+      const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+
+      if (!GOOGLE_SCRIPT_URL) {
+        console.error("Google Script URL is missing!");
+        return;
+      }
+
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwl6_3Qz4YZwf5QPCKLWwrH9AVd4dz4XDfUzlc_Yqs7ZGfkBH8iMf93iT40B-h5G2vstQ/exec",
+        GOOGLE_SCRIPT_URL,
         {
           method: "POST",
           body: new URLSearchParams(formData),
@@ -33,7 +40,7 @@ export default function ContactForm() {
       );
 
       if (response.ok) {
-        setSuccess("Your message has been sent!");
+        setSuccess("Your contact has been saved!");
         setFormData({ name: "", number: "", email: "", message: "" });
       } else {
         setSuccess("Something went wrong. Try again later.");
@@ -46,12 +53,13 @@ export default function ContactForm() {
 
   return (
     <div className="container">
+      <img src="src/assets/TeGaia-logo-11.svg" alt="Company Logo" className="company-logo" />
       <h4>Contact Us</h4>
       <form onSubmit={handleSubmit}>
         <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
         <input type="text" name="number" placeholder="Number" value={formData.number} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <textarea name="message" rows="4" placeholder="Your Message" value={formData.message} onChange={handleChange} required />
+        <textarea name="message" rows="4" placeholder="Additional Notes" value={formData.message} onChange={handleChange} required />
         <button type="submit" id="submit" disabled={loading}>
           {loading ? "Sending..." : "Submit"}
         </button>
