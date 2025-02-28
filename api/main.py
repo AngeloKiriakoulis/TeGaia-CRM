@@ -1,18 +1,21 @@
 import os
 import smtplib
 from email.message import EmailMessage
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
 from dotenv import load_dotenv
-# from transformers import pipeline
+# Fix import for utils (add to sys.path if needed)
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from utils.agent import EmailAgent
+
 
 # Load environment variables
 load_dotenv()
 EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASS = os.getenv("EMAIL_PASS")
-# HUGGINGFACE_MODEL = os.getenv("HUGGINGFACE_MODEL")
-# HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+
 
 # Initialize FastAPI
 app = FastAPI()
@@ -59,30 +62,19 @@ def send_email(to_email, subject, body):
 @app.post("/api/contact")
 async def contact_form(data: ContactForm):
     try:
-#         messages = [
-#     {"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
-#     {"role": "user", "content": "Who are you?"},
-# ]
-#         ai_response = generator(messages)
-
         # Send the AI-generated email
         email_sent = send_email(
             to_email=data.email,
             subject="Collaboration with TeGaia!",
-            body="HI!"
+            body= EmailAgent(data.company,data.message)
         )
-        print(email_sent)
 
-    #     if email_sent:
-    #         return {"success": "Email successfully sent!"}
-    #     else:
-    #         raise HTTPException(status_code=500, detail="Failed to send email")
-    # except Exception as e:
-    #     raise HTTPException(status_code=500, detail=str(e))
-    # Simulate the email sending or any other backend operation
-        print(f"Received contact form data: {data}")
-        # Return a success message
-        return {"success": "Form submitted successfully!"}
+        if email_sent:
+            return {"success": "Email successfully sent!"}
+        else:
+            raise HTTPException(status_code=500, detail="Failed to send email")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
     except Exception as e:
         print(f"Error: {e}")
         return {"detail": "An error occurred on the server."}
