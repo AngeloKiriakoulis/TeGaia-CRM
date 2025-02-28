@@ -1,7 +1,6 @@
 from smolagents import Tool
 import os
 from huggingface_hub import InferenceClient
-import requests
 
 class EmailGenerationTool(Tool):
   name = "email_generator"
@@ -46,6 +45,3 @@ class EmailGenerationTool(Tool):
     # Generate response
     response = client.text_generation(prompt, max_new_tokens=200)
     return response
-
-# Initialize tool instance
-email_generator_tool = EmailGenerationTool()
