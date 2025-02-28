@@ -52,7 +52,7 @@ export default function ContactForm() {
 
     
     try {
-      const response = await fetch("http://localhost:8000/api/contact", {
+      const response = await fetch("https://tegaia-crm.vercel.app/api/contact", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
