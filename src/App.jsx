@@ -6,6 +6,7 @@ export default function ContactForm() {
     name: "",
     number: "",
     email: "",
+    company: "",
     message: "",
   });
   const [loading, setLoading] = useState(false);
@@ -41,7 +42,7 @@ export default function ContactForm() {
 
       if (response.ok) {
         setSuccess("Your contact has been saved!");
-        setFormData({ name: "", number: "", email: "", message: "" });
+        setFormData({ name: "", number: "", email: "", company: "", message: "" });
       } else {
         setSuccess("Something went wrong. Try again later.");
       }
@@ -59,7 +60,8 @@ export default function ContactForm() {
         <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
         <input type="text" name="number" placeholder="Number" value={formData.number} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <textarea name="message" rows="4" placeholder="Additional Notes" value={formData.message} onChange={handleChange} required />
+        <input type="text" name="company" placeholder="Company Name" value={formData.company} onChange={handleChange} required />
+        <textarea name="message" rows="4" placeholder="Additional Notes" value={formData.message} onChange={handleChange} />
         <button type="submit" id="submit" disabled={loading}>
           {loading ? "Sending..." : "Submit"}
         </button>
