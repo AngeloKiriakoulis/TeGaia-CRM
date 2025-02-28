@@ -16,6 +16,9 @@ load_dotenv()
 EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASS = os.getenv("EMAIL_PASS")
 
+if not EMAIL_USER or not EMAIL_PASS:
+    raise ValueError("Missing SMTP credentials! Check your .env file.")
+
 
 # Initialize FastAPI
 app = FastAPI()
@@ -66,7 +69,7 @@ async def contact_form(data: ContactForm):
         email_sent = send_email(
             to_email=data.email,
             subject="Collaboration with TeGaia!",
-            body= EmailAgent(data.company,data.message)
+            body= EmailAgent(data.company, data.message).run()
         )
 
         if email_sent:
@@ -74,7 +77,5 @@ async def contact_form(data: ContactForm):
         else:
             raise HTTPException(status_code=500, detail="Failed to send email")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-    except Exception as e:
         print(f"Error: {e}")
-        return {"detail": "An error occurred on the server."}
+        raise HTTPException(status_code=500, detail="An error occurred on the server.")
