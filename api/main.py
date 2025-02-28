@@ -1,11 +1,11 @@
 import os
 import smtplib
 from email.message import EmailMessage
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
 from dotenv import load_dotenv
-from transformers import pipeline
+# from transformers import pipeline
 
 # Load environment variables
 load_dotenv()
