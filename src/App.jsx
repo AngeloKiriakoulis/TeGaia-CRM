@@ -49,6 +49,27 @@ export default function ContactForm() {
     } catch (error) {
       setSuccess("Network error. Please try again.");
     }
+
+    
+    try {
+      const response = await fetch("http://localhost:8000/api/contact", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      const result = await response.json();
+      if (result && typeof result.success === 'string') {
+        setSuccess(result.success);
+      } else {
+        // Handle unexpected structure in result
+        setSuccess(result.detail || "An unexpected error occurred.");
+      }
+    } catch (error) {
+      setSuccess("E-mail couldn't be sent.");
+    }
     setLoading(false);
   };
 
