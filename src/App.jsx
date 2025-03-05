@@ -49,7 +49,7 @@ export default function ContactForm() {
     } catch (error) {
       setSuccess("Network error. Please try again.");
     }
-
+    setLoading(false);
     
     try {
       const response = await fetch("https://tegaia-crm.vercel.app/api/contact", {
@@ -70,7 +70,7 @@ export default function ContactForm() {
     } catch (error) {
       setSuccess("E-mail couldn't be sent.");
     }
-    setLoading(false);
+    // setLoading(false);
   };
 
   return (
