@@ -19,7 +19,6 @@ EMAIL_PASS = os.getenv("EMAIL_PASS")
 if not EMAIL_USER or not EMAIL_PASS:
     raise ValueError("Missing SMTP credentials! Check your .env file.")
 
-
 # Initialize FastAPI
 app = FastAPI()
 app.add_middleware(
@@ -30,8 +29,6 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-# Load Hugging Face model for text generation
-# generator = pipeline("text-generation", model=HUGGINGFACE_MODEL,token=HUGGINGFACE_TOKEN)
 
 # Define request schema
 class ContactForm(BaseModel):
@@ -69,7 +66,7 @@ async def contact_form(data: ContactForm):
         email_sent = send_email(
             to_email=data.email,
             subject="Collaboration with TeGaia!",
-            body= EmailAgent(data.company, data.message).run()
+            body = EmailAgent(data.company, data.message).run()
         )
 
         if email_sent:
