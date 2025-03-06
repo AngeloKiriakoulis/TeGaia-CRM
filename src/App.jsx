@@ -70,7 +70,12 @@ export default function ContactForm() {
     } catch (error) {
       setSuccess("E-mail couldn't be sent.");
     }
-    // setLoading(false);
+    // Reset success message after 3-4 seconds
+    if (success) {
+      setTimeout(() => {
+        setSuccess(null);
+      }, 4000); // 4000ms = 4 seconds
+    }
   };
 
   return (
