@@ -59,8 +59,8 @@ button:focus-visible {
 }
 
 .container {
-  max-width: 500px;
-  margin: 5px auto;
+  max-width: 800px;
+  margin: 10px auto;
   padding: 20px;
   border: 1px solid #ffffff;
   border-radius: 8px;
@@ -68,8 +68,6 @@ button:focus-visible {
   color: white;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-  /* Centering */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -77,8 +75,8 @@ button:focus-visible {
 }
 
 .company-logo {
-  width: 100px; /* Adjust size as needed */
-  margin-bottom: 10px;
+  width: 120px;
+  margin-bottom: 15px;
   animation: fadeIn 0.8s ease-in-out;
 }
 
@@ -94,31 +92,30 @@ button:focus-visible {
 }
 
 h4 {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   margin-top: auto;
   color: #fff;
   background: linear-gradient(90deg, #403124, #929292);
-  background-clip:border-box;
+  background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-
 input,
 textarea {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
+  padding: 15px;
+  margin: 12px 0;
   border: none;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.815);
+  background: rgba(255, 255, 255, 0.9); /* Fix for better visibility */
   color: #000;
   transition: border-color 0.3s ease-in-out;
-  box-sizing: border-box; /* Ensures it doesn't overflow */
+  box-sizing: border-box;
 }
 
 textarea {
@@ -133,7 +130,7 @@ input:focus, textarea:focus {
 #submit {
   background-color: rgb(1, 102, 90);
   color: white;
-  padding: 10px;
+  padding: 15px;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -146,32 +143,42 @@ input:focus, textarea:focus {
 }
 
 .success-message {
-  margin-top: 10px;
-  margin-bottom: auto;
-  font-size: 16px;
+  margin-top: 15px;
+  font-size: 18px;
   color: rgb(3, 120, 3);
   font-weight: 600;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+@media (max-width: 1024px) {
   .container {
-    background: rgba(0, 0, 0, 0.05);
+    max-width: 90%;
+    padding: 30px;
   }
-  input, textarea {
-    background: rgba(0, 0, 0, 0.05);
-    color: black;
+  h4 {
+    font-size: 28px;
   }
-  .success-message {
-    color: #2e7d32;
+  input,
+  textarea {
+    padding: 14px;
+  }
+  #submit {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 25px;
+  }
+  h4 {
+    font-size: 24px;
+  }
+  input,
+  textarea {
+    padding: 12px;
+  }
+  #submit {
+    padding: 12px;
   }
 }
