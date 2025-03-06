@@ -39,7 +39,7 @@ class EmailAgent:
 
         - Ensure the email is concise, coherent, and tailored to the sender's message, fostering a positive impression of TeGaia's brand and mission.
 
-        NOTE #1: Begin the email with "Dear {company_name} team", write the body of the email, and then close the email with "Best regards, newline TeGaia Team (the equivalent if you are writing in Greek)"
+        NOTE #1: Begin the email with "Dear {company_name} team (the equivalent if you are writing in Greek)", write the body of the email, and then close the email with "Best regards, newline TeGaia Team (the equivalent if you are writing in Greek)"
 
         NOTE #2: IF you realise that a company is based in greece, write the email in greek. Else, write it in English. 
 
