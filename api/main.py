@@ -23,8 +23,8 @@ if not EMAIL_USER or not EMAIL_PASS:
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    # allow_origins=["https://tegaia-crm.vercel.app"],  # Change this if deployed
-    allow_origins=["*"],  # Change this if deployed
+    allow_origins=["https://tegaia-crm.vercel.app"],  # Change this if deployed
+    # allow_origins=["*"],  # Change this if deployed
     allow_credentials=True,
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allows all headers
