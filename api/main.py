@@ -60,7 +60,7 @@ def send_email(to_email, subject, body):
 
 # API route to handle form submissions
 @app.post("/api/contact")
-async def contact_form(data:ContactForm):
+async def contact_form(data: ContactForm):
     try:
         # Send the AI-generated email
         email_sent = send_email(
