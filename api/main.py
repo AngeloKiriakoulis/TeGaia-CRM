@@ -23,7 +23,8 @@ if not EMAIL_USER or not EMAIL_PASS:
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://tegaia-crm.vercel.app"],  # Change this if deployed
+    # allow_origins=["https://tegaia-crm.vercel.app"],  # Change this if deployed
+    allow_origins=["*"],  # Change this if deployed
     allow_credentials=True,
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allows all headers
@@ -48,7 +49,7 @@ def send_email(to_email, subject, body):
         msg.set_content(body)
 
         # Send email via SMTP
-        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+        with smtplib.SMTP("mail.tegaia.gr", 587) as server:
             server.starttls()
             server.login(EMAIL_USER, EMAIL_PASS)
             server.send_message(msg)
