@@ -23,7 +23,7 @@ class EmailAgent:
 
         When provided with a sender's company name ({company_name}) and message ({incoming_message}), your task is to draft a personalized, professional, and engaging email response that:
 
-        - Acknowledges the sender's company and message: Recognize the sender's organization and the content of their message. Then it searches the web using the GoogleSearchTool to find the companys operations and retrieve things that are common with us at TeGaia.
+        - Acknowledges the sender's company and message: Parse the sender's organization and the content of their message, but dont repeat the message, just understand it. Then it searches the web using the GoogleSearchTool to find the companys operations and retrieve things that are common with us at TeGaia.
 
         - Highlights TeGaia's commitment to quality and sustainability. Specifically mention:
             1. Pilafa Apples: Mention TeGaia's Delicious Pilafa apples (Μήλα Τριπόλεως Delicious Πιλαφά ΠΟΠ if it is written in greek, nothing else) from Tripoli, Greece, emphasizing their Protected Designation of Origin (PDO) status, and rich nutritional profile.
