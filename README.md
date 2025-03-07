@@ -1,8 +1,8 @@
-# React + Vite
+# TeGaia-CRM
+Welcome to TeGaia-CRM, a Customer Relationship Management (CRM) system designed to streamline your business processes and enhance customer interactions. This project is currently under development, and we appreciate your interest and contributions.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+Contact Management: Efficiently store and manage information about your customers, including contact details and interaction history.
+Lead Tracking: Monitor potential customers and manage sales pipelines effectively.
+Task Management: Assign and track tasks to ensure timely follow-ups and customer satisfaction.
+Reporting and Analytics: Gain insights into sales performance and customer behavior to make informed decisions.
