@@ -65,7 +65,7 @@ async def contact_form(data: ContactForm):
         # Send the AI-generated email
         email_sent = send_email(
             to_email=data.email,
-            subject="Collaboration with TeGaia!",
+            subject="TeGaia: Thank you for reaching out! | Ευχαριστούμε για την επικοινωνία!",
             body = EmailAgent(data.company, data.message).run()
         )
 
